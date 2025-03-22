@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin liên kết ảnh</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --background: #f9fafb;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            padding: 15px 20px;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .card-header h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .link-info p {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+        
+        .link-url-container {
+            position: relative;
+            margin-top: 15px;
+        }
+        
+        .link-url {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            word-break: break-all;
+        }
+        
+        .link-url a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 14px;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .copy-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        
+        .copy-button:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        .copy-button svg {
+            margin-right: 5px;
+        }
+        
+        .copy-tooltip {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--success);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .copy-tooltip.show {
+            opacity: 1;
+        }
+        
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            padding: 20px;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.02);
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            min-width: 160px;
+        }
+        
+        .button:hover {
+            background-color: var(--primary-hover);
+        }
+        
+        .button.secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .button.secondary:hover {
+            background-color: #f9fafb;
+        }
+        
+        .button svg {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin liên kết</h2>
+        
+        <div>
+            <!-- Thông tin liên kết -->
+            <div class="card link-info">
+                <div class="card-header">
+                    <h3>Liên kết ảnh</h3>
+                </div>
+                <div class="card-body">
+                    <p>Bạn có thể chia sẻ liên kết này:</p>
+                    <div class="link-url-container">
+                        <div class="link-url">
+                            <a href="{{imageLink}}" target="_blank" id="image-link">{{imageLink}}</a>
+                            <button class="copy-button" id="copy-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                Sao chép
+                            </button>
+                        </div>
+                        <div class="copy-tooltip" id="copy-tooltip">Đã sao chép!</div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        
+        <div class="actions">
+            <a href="/" class="button secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                Trở về trang chủ
+            </a>
+            <a href="/qr/link/{{linkInfo.id}}" class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <rect x="8" y="8" width="8" height="8"></rect>
+                </svg>
+                Tạo mã QR
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Chức năng sao chép liên kết
+        const copyButton = document.getElementById('copy-button');
+        const imageLink = document.getElementById('image-link');
+        const copyTooltip = document.getElementById('copy-tooltip');
+        
+        copyButton.addEventListener('click', function() {
+            // Tạo một phần tử input tạm thời
+            const tempInput = document.createElement('input');
+            tempInput.value = imageLink.href;
+            document.body.appendChild(tempInput);
+            
+            // Chọn và sao chép văn bản
+            tempInput.select();
+            document.execCommand('copy');
+            
+            // Xóa phần tử input tạm thời
+            document.body.removeChild(tempInput);
+            
+            // Hiển thị thông báo đã sao chép
+            copyTooltip.classList.add('show');
+            setTimeout(function() {
+                copyTooltip.classList.remove('show');
+            }, 2000);
+        });
+        
+        // Phóng to ảnh khi nhấp vào
+        const previewImage = document.getElementById('preview-image');
+        
+        previewImage.addEventListener('click', function() {
+            if (this.classList.contains('fullscreen')) {
+                this.classList.remove('fullscreen');
+                document.body.style.overflow = 'auto';
+            } else {
+                this.classList.add('fullscreen');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        
+        // Thêm CSS cho chế độ phóng to
+        const style = document.createElement('style');
+        style.textContent = `
+            .fullscreen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                object-fit: contain;
+                background-color: rgba(0, 0, 0, 0.9);
+                z-index: 1000;
+                padding: 20px;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+                cursor: zoom-out;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
