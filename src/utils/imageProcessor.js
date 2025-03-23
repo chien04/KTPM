@@ -31,13 +31,6 @@ const generateQRFilter = createFilter('generateQR', async (inputData) => {
   return { ...inputData, qrPath, imageUrl };
 });
 
-// Filter 4: Lấy thông tin liên kết (giữ lại cho các trường hợp cần sử dụng riêng)
-const getLinkInfoFilter = createFilter('getLinkInfo', async (inputData) => {
-  const { linkId, linksFile } = inputData;
-  const linkInfo = await getImageLink(linkId, linksFile);
-  return { ...inputData, linkInfo };
-});
-
 // Tạo pipeline thống nhất xử lý toàn bộ quy trình
 const imagePipeline = createPipeline(
   withPerformanceTracking('pngConverter', pngConverterFilter),
@@ -50,5 +43,4 @@ module.exports = {
   pngConverterFilter,
   createLinkFilter,
   generateQRFilter,
-  getLinkInfoFilter
 };

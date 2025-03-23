@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,27 +18,27 @@
             --performance-border: #bae6fd;
             --performance-text: #0369a1;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: var(--background);
             color: var(--text);
             line-height: 1.6;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 30px;
         }
-        
+
         h2 {
             text-align: center;
             margin-bottom: 30px;
@@ -46,7 +47,7 @@
             position: relative;
             padding-bottom: 10px;
         }
-        
+
         h2:after {
             content: '';
             position: absolute;
@@ -58,20 +59,20 @@
             background-color: var(--primary);
             border-radius: 3px;
         }
-        
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
-        
+
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         .card {
             background-color: var(--card-bg);
             border-radius: 12px;
@@ -79,27 +80,27 @@
             overflow: hidden;
             transition: transform 0.3s ease;
         }
-        
+
         .card:hover {
             transform: translateY(-5px);
         }
-        
+
         .card-header {
             padding: 15px 20px;
             background-color: var(--primary);
             color: white;
         }
-        
+
         .card-header h3 {
             font-size: 18px;
             font-weight: 500;
             margin: 0;
         }
-        
+
         .card-body {
             padding: 20px;
         }
-        
+
         .image-container {
             display: flex;
             justify-content: center;
@@ -109,14 +110,14 @@
             padding-bottom: 20px;
             margin-bottom: 20px;
         }
-        
+
         .image-container img {
             max-width: 100%;
             max-height: 300px;
             object-fit: contain;
             border-radius: 6px;
         }
-        
+
         .link-box {
             background-color: #f3f4f6;
             border-radius: 6px;
@@ -126,7 +127,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .link-text {
             flex-grow: 1;
             overflow: hidden;
@@ -136,7 +137,7 @@
             font-size: 14px;
             color: #4b5563;
         }
-        
+
         .copy-button {
             background-color: var(--primary);
             color: white;
@@ -151,17 +152,17 @@
             align-items: center;
             gap: 5px;
         }
-        
+
         .copy-button:hover {
             background-color: var(--primary-hover);
         }
-        
+
         .info-text {
             font-size: 14px;
             color: #6b7280;
             margin-top: 10px;
         }
-        
+
         .qr-container {
             display: flex;
             justify-content: center;
@@ -171,19 +172,19 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin: 15px 0;
         }
-        
+
         .qr-container img {
             max-width: 200px;
             max-height: 200px;
         }
-        
+
         .actions {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 20px;
         }
-        
+
         .button {
             display: inline-flex;
             align-items: center;
@@ -199,21 +200,21 @@
             min-width: 120px;
             gap: 5px;
         }
-        
+
         .button:hover {
             background-color: var(--primary-hover);
         }
-        
+
         .button.secondary {
             background-color: white;
             color: var(--primary);
             border: 1px solid var(--primary);
         }
-        
+
         .button.secondary:hover {
             background-color: #f9fafb;
         }
-        
+
         .creation-time {
             text-align: center;
             margin-top: 40px;
@@ -222,23 +223,23 @@
             border-radius: 8px;
             box-shadow: var(--shadow);
         }
-        
+
         .creation-time h3 {
             color: var(--primary);
             margin-bottom: 10px;
             font-size: 18px;
         }
-        
+
         .creation-time p {
             font-size: 16px;
             color: var(--text);
         }
-        
+
         .time-highlight {
             font-weight: bold;
             color: var(--primary);
         }
-        
+
         .performance-box {
             background-color: var(--performance-bg);
             border: 1px solid var(--performance-border);
@@ -250,17 +251,17 @@
             display: flex;
             align-items: center;
         }
-        
+
         .performance-box svg {
             margin-right: 8px;
             flex-shrink: 0;
         }
-        
+
         .performance-time {
             font-weight: bold;
             margin-left: 5px;
         }
-        
+
         .total-performance {
             margin-top: 20px;
             background-color: #f0fdf4;
@@ -270,12 +271,12 @@
             border-radius: 8px;
             text-align: center;
         }
-        
+
         .total-performance h4 {
             margin-bottom: 10px;
             font-size: 16px;
         }
-        
+
         .total-performance-time {
             font-size: 24px;
             font-weight: bold;
@@ -283,10 +284,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Kết quả chuyển đổi ảnh</h2>
-        
+
         <div class="grid-container">
             <!-- Ảnh gốc -->
             <div class="card">
@@ -297,13 +299,9 @@
                     <div class="image-container">
                         <img src="{{originalImage}}" alt="Ảnh gốc">
                     </div>
-                    <div class="info-text">
-                        <p>Định dạng gốc: {{originalFormat}}</p>
-                        <p>Kích thước: {{originalSize}}</p>
-                    </div>
                 </div>
             </div>
-            
+
             <!-- Ảnh đã chuyển đổi -->
             <div class="card">
                 <div class="card-header">
@@ -313,11 +311,9 @@
                     <div class="image-container">
                         <img src="{{convertedImage}}" alt="Ảnh đã chuyển đổi">
                     </div>
-                    <div class="info-text">
-                        <p>Kích thước: {{convertedSize}}</p>
-                    </div>
                     <div class="performance-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
@@ -325,24 +321,19 @@
                     </div>
                     <div class="actions">
                         <a href="{{convertedImage}}" download class="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
                             Tải xuống
                         </a>
-                        <a href="/" class="button secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9 9 9 0 0 0 9 9 9 9 0 0 0 9-9z"></path>
-                                <path d="M9 12l2 2 4-4"></path>
-                            </svg>
-                            Chuyển đổi khác
-                        </a>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Link ảnh -->
             <div class="card">
                 <div class="card-header">
@@ -353,36 +344,26 @@
                     <div class="link-box">
                         <span class="link-text" id="imageUrl">{{imageUrl}}</span>
                         <button class="copy-button" onclick="copyToClipboard('imageUrl')">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
                             Sao chép
                         </button>
                     </div>
-                    <div class="info-text">
-                        <p>Link có hiệu lực đến: <span class="time-highlight">{{expirationDate}}</span></p>
-                    </div>
                     <div class="performance-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                         Thời gian tạo link: <span class="performance-time">{{createLinkTime}}ms</span>
                     </div>
-                    <div class="actions">
-                        <a href="/link/{{linkId}}/info" class="button secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="16" x2="12" y2="12"></line>
-                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                            </svg>
-                            Thông tin chi tiết
-                        </a>
-                    </div>
                 </div>
             </div>
-            
+
             <!-- Mã QR -->
             <div class="card">
                 <div class="card-header">
@@ -394,7 +375,8 @@
                         <img src="{{qrCodePath}}" alt="Mã QR cho ảnh">
                     </div>
                     <div class="performance-box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
@@ -402,7 +384,9 @@
                     </div>
                     <div class="actions">
                         <a href="{{qrCodePath}}" download="qrcode.png" class="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -413,41 +397,49 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Thời gian tạo ảnh và tổng thời gian xử lý -->
         <div class="creation-time">
-            <h3>Thông tin thời gian</h3>
-            <p>Ảnh được tạo vào: <span class="time-highlight">{{creationTime}}</span></p>
-            
             <div class="total-performance">
                 <h4>Tổng thời gian xử lý</h4>
                 <div class="total-performance-time">{{totalProcessingTime}}ms</div>
                 <p>Bao gồm: Chuyển đổi ảnh, tạo link và tạo mã QR</p>
             </div>
         </div>
+        <div class="actions">
+            <a href="/" class="button secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9 9 9 0 0 0 9 9 9 9 0 0 0 9-9z"></path>
+                    <path d="M9 12l2 2 4-4"></path>
+                </svg>
+                Chuyển đổi khác
+            </a>
+        </div>
     </div>
 
     <script>
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(function() {
+            navigator.clipboard.writeText(text).then(function () {
                 const button = document.querySelector(`#${elementId}`).nextElementSibling;
                 const originalText = button.innerHTML;
-                
+
                 button.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                     Đã sao chép!
                 `;
-                
-                setTimeout(function() {
+
+                setTimeout(function () {
                     button.innerHTML = originalText;
                 }, 2000);
-            }).catch(function(err) {
+            }).catch(function (err) {
                 console.error('Không thể sao chép: ', err);
             });
         }
     </script>
 </body>
+
 </html>

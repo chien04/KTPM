@@ -3,9 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const router = express.Router();
 
-// Import các module cần thiết
 const upload = require('../config/multer');
-const { imagePipeline, pngConverterFilter } = require('../utils/imageProcessor');
+const { imagePipeline } = require('../utils/imageProcessor');
 
 // Route để xử lý việc upload, chuyển đổi ảnh và tạo link và QR
 router.post('/', upload.single('image'), async function (req, res) {
@@ -51,8 +50,6 @@ router.post('/', upload.single('image'), async function (req, res) {
       (result.performance?.generateQR || 0
     );
     
-    console.log(`hel "${result.performance}"`)
-
     res.render('result', { 
       originalImage: '/uploads/' + path.basename(inputPath),
       convertedImage: relativePath,
@@ -62,12 +59,10 @@ router.post('/', upload.single('image'), async function (req, res) {
       imageUrl: result.imageUrl,
 
       pngConverterTime: result.performance?.pngConverter?.toFixed(2) || "N/A",
-      // console.log(pngConverterTime),
       createLinkTime: result.performance?.createLink?.toFixed(2) || "N/A",
       generateQRTime: result.performance?.generateQR?.toFixed(2) || "N/A",
       totalProcessingTime: totalTime.toFixed(2)
     });
-    console.log(`chien "${result}"`)
 
   } catch (error) {
     console.error('Lỗi khi xử lý ảnh:', error);
