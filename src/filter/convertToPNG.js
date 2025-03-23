@@ -21,8 +21,6 @@ async function convertToPng(inputPath, outputPath) {
     await sharp(inputPath)
       .png()
       .toFile(outputPath);
-
-    console.log(`Chuyển đổi thành công: ${inputPath} -> ${outputPath}`);
     return outputPath;
   } catch (error) {
     console.error('Lỗi khi chuyển đổi ảnh:', error);
